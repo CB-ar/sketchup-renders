@@ -1,0 +1,67 @@
+{
+  "_description": "V-Ray for SketchUp — parámetros para render de interior",
+  "_usage": "Aplicar via VRay.set_render_param(plugin, param, value) desde Ruby/MCP",
+
+  "SettingsGI": {
+    "on": true,
+    "primary_engine": 4,
+    "_primary_engine_note": "4 = Brute Force — mejor calidad para interiores",
+    "secondary_engine": 3,
+    "_secondary_engine_note": "3 = Light Cache — combo estándar para interiores"
+  },
+
+  "SettingsLightCache": {
+    "subdivs": 1500,
+    "num_passes": 8,
+    "filter": 1,
+    "filter_size": 0.02
+  },
+
+  "SettingsImageSampler": {
+    "type": 1,
+    "_type_note": "1 = Progressive",
+    "progressive_minSubdivs": 1,
+    "progressive_maxSubdivs": 200,
+    "progressive_threshold": 0.005,
+    "_threshold_note": "0.005 = calidad alta. Para preview usar 0.02"
+  },
+
+  "SettingsDMCSampler": {
+    "subdivs_mult": 1.0
+  },
+
+  "SettingsColorMapping": {
+    "type": 4,
+    "_type_note": "4 = Reinhard — ideal para interiores con alto contraste",
+    "dark_mult": 0.8,
+    "bright_mult": 1.0,
+    "gamma": 2.2
+  },
+
+  "render_size": {
+    "width": 1920,
+    "height": 1080,
+    "_note": "Usar VRay.set_render_size(width, height)"
+  },
+
+  "presets": {
+    "preview": {
+      "progressive_threshold": 0.02,
+      "progressive_maxSubdivs": 50,
+      "light_cache_subdivs": 500,
+      "render_size": [960, 540]
+    },
+    "final": {
+      "progressive_threshold": 0.005,
+      "progressive_maxSubdivs": 200,
+      "light_cache_subdivs": 1500,
+      "render_size": [1920, 1080]
+    },
+    "high_quality": {
+      "progressive_threshold": 0.002,
+      "progressive_maxSubdivs": 500,
+      "light_cache_subdivs": 2000,
+      "render_size": [2560, 1440]
+    }
+  }
+}
