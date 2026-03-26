@@ -1,17 +1,20 @@
 {
   "_description": "V-Ray for SketchUp — parámetros para render de interior",
   "_usage": "Aplicar via VRay.set_render_param(plugin, param, value) desde Ruby/MCP",
+  "_nota": "Claude NO puede disparar el render desde Ruby. Carla debe clickear Render en toolbar de V-Ray.",
 
   "SettingsGI": {
     "on": true,
     "primary_engine": 4,
-    "_primary_engine_note": "4 = Brute Force — mejor calidad para interiores",
+    "_primary_engine_note": "4 = Brute Force",
     "secondary_engine": 3,
-    "_secondary_engine_note": "3 = Light Cache — combo estándar para interiores"
+    "_secondary_engine_note": "3 = Light Cache",
+    "primary_multiplier": 0.85,
+    "secondary_multiplier": 0.85
   },
 
   "SettingsLightCache": {
-    "subdivs": 1500,
+    "subdivs": 2000,
     "num_passes": 8,
     "filter": 1,
     "filter_size": 0.02
@@ -20,27 +23,38 @@
   "SettingsImageSampler": {
     "type": 1,
     "_type_note": "1 = Progressive",
-    "progressive_minSubdivs": 1,
-    "progressive_maxSubdivs": 200,
-    "progressive_threshold": 0.005,
-    "_threshold_note": "0.005 = calidad alta. Para preview usar 0.02"
+    "progressive_minSubdivs": 4,
+    "progressive_maxSubdivs": 1000,
+    "progressive_threshold": 0.001,
+    "_threshold_note": "0.001 = alta calidad. Preview: 0.02"
   },
 
   "SettingsDMCSampler": {
-    "subdivs_mult": 1.0
+    "subdivs_mult": 2.0
   },
 
   "SettingsColorMapping": {
-    "type": 4,
-    "_type_note": "4 = Reinhard — ideal para interiores con alto contraste",
-    "dark_mult": 0.8,
+    "type": 0,
+    "_type_note": "0 = Linear Multiply — USAR SIEMPRE. Exponential (1) causa bruma gris.",
     "bright_mult": 1.0,
-    "gamma": 2.2
+    "dark_mult": 1.0,
+    "gamma": 2.2,
+    "affect_background": true,
+    "clamp_output": true
+  },
+
+  "SunLight": {
+    "intensity_multiplier": 0.6,
+    "size_multiplier": 5.0,
+    "_note": "size_multiplier alto = sombras más suaves"
+  },
+
+  "TexSky": {
+    "sky_model": 2,
+    "_note": "2 = Hosek/Wilkie — más neutro que Preetham"
   },
 
   "render_size": {
-    "width": 1920,
-    "height": 1080,
     "_note": "Usar VRay.set_render_size(width, height)"
   },
 
@@ -48,20 +62,29 @@
     "preview": {
       "progressive_threshold": 0.02,
       "progressive_maxSubdivs": 50,
+      "progressive_minSubdivs": 1,
+      "subdivs_mult": 1.0,
       "light_cache_subdivs": 500,
-      "render_size": [960, 540]
+      "render_size": [960, 540],
+      "tiempo": "~1 min"
     },
     "final": {
       "progressive_threshold": 0.005,
       "progressive_maxSubdivs": 200,
+      "progressive_minSubdivs": 1,
+      "subdivs_mult": 1.0,
       "light_cache_subdivs": 1500,
-      "render_size": [1920, 1080]
+      "render_size": [1920, 1080],
+      "tiempo": "~5 min"
     },
     "high_quality": {
-      "progressive_threshold": 0.002,
-      "progressive_maxSubdivs": 500,
+      "progressive_threshold": 0.001,
+      "progressive_maxSubdivs": 1000,
+      "progressive_minSubdivs": 4,
+      "subdivs_mult": 2.0,
       "light_cache_subdivs": 2000,
-      "render_size": [2560, 1440]
+      "render_size": [2560, 1440],
+      "tiempo": "~15 min"
     }
   }
 }
