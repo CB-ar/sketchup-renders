@@ -1,0 +1,62 @@
+{
+  "_checkpoint": "Opcion 1.2 — Scene 4 — primer render limpio aprobado",
+  "_fecha": "2026-03-26",
+  "_resultado": "Buena definición, sin ruido. Pendiente: corregir tono amarillo y balance de luz.",
+
+  "SettingsGI": {
+    "on": true,
+    "primary_engine": 0,
+    "_primary_engine_note": "0 = Irradiance Map — clave para eliminar el ruido",
+    "secondary_engine": 3,
+    "primary_multiplier": 1.0,
+    "secondary_multiplier": 1.0
+  },
+
+  "SettingsIrradianceMap": {
+    "min_rate": -3,
+    "max_rate": 0,
+    "subdivs": 60,
+    "interp_samples": 25,
+    "color_threshold": 0.3,
+    "normal_threshold": 0.1
+  },
+
+  "SettingsLightCache": {
+    "subdivs": 2000,
+    "num_passes": 8,
+    "filter": 1,
+    "filter_size": 0.02
+  },
+
+  "SettingsImageSampler": {
+    "type": 1,
+    "progressive_minSubdivs": 1,
+    "progressive_maxSubdivs": 100,
+    "progressive_threshold": 0.005
+  },
+
+  "SettingsDMCSampler": {
+    "subdivs_mult": 1.5
+  },
+
+  "SettingsColorMapping": {
+    "type": 0,
+    "_type_note": "Linear Multiply",
+    "bright_mult": 1.0,
+    "dark_mult": 1.0,
+    "gamma": 2.2,
+    "affect_background": true,
+    "clamp_output": true
+  },
+
+  "SunLight": {
+    "intensity_multiplier": 1.0,
+    "size_multiplier": 3.0
+  },
+
+  "TexSky": {
+    "sky_model": 2
+  },
+
+  "render_size": [2560, 1440]
+}
